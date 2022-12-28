@@ -1,0 +1,189 @@
+<?xml version="1.0" encoding="utf-8" standalone="no" ?>
+<placeable type="pigHusbandry" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="../../../../shared/xml/schema/placeable.xsd">
+    <storeData>
+        <name>$l10n_storeItem_animalBarnPigMediumMI</name>
+        <image>$data/store/store_empty.png</image>
+        <functions>
+            <function>$l10n_function_animalPenPig</function>
+        </functions>
+		<price>1</price>
+		<canBeSold>false</canBeSold>
+        <showInStore>false</showInStore>
+        <dailyUpkeep>0</dailyUpkeep>		
+        <lifetime>1000</lifetime>
+        <rotation>0</rotation>
+        <brand>RUDOLFHOERMANN</brand>
+        <species>placeable</species>
+        <category>animalpens</category>
+        <brush>
+            <type>placeable</type>
+            <category>animals</category>
+            <tab>pigs</tab>
+        </brush>
+        <vertexBufferMemoryUsage>1392640</vertexBufferMemoryUsage>
+        <indexBufferMemoryUsage>194048</indexBufferMemoryUsage>
+        <textureMemoryUsage>9895936</textureMemoryUsage>
+        <instanceVertexBufferMemoryUsage>0</instanceVertexBufferMemoryUsage>
+        <instanceIndexBufferMemoryUsage>0</instanceIndexBufferMemoryUsage>
+
+        <storeIconRendering>
+            <settings cameraXRot="-20" cameraYRot="50" advancedBoundingBox="true"/>
+        </storeIconRendering>
+        <audioMemoryUsage>0</audioMemoryUsage>
+    </storeData>
+
+    <base>
+        <filename>maps/placeables/animals/pigBarnMedium/pigBarnMediumMI.i3d</filename>
+        <canBeRenamed>true</canBeRenamed>
+		<boughtWithFarmland>true</boughtWithFarmland>
+    </base>
+
+    <placement useRandomYRotation="false" useManualYRotation="true">
+        <testAreas>
+            <testArea startNode="testArea1Start" endNode="testArea1End" />
+        </testAreas>
+
+        <sounds>
+            <place template="smallImp" />
+            <placeLayered template="pigLayer" />
+        </sounds>
+    </placement>
+
+    <clearAreas>
+        <clearArea startNode="clearArea1Start" widthNode="clearArea1Width" heightNode="clearArea1Height"/>
+    </clearAreas>
+
+    <leveling requireLeveling="true" maxSmoothDistance="10" maxSlope="75" maxEdgeAngle="30">
+        <levelAreas>
+            <levelArea startNode="levelArea1Start" widthNode="levelArea1Width" heightNode="levelArea1Height" groundType="dirt"/>
+        </levelAreas>
+
+        <paintAreas>
+            <paintArea startNode="paintArea1Start" widthNode="paintArea1Width" heightNode="paintArea1Height" groundType="animalMud" />
+        </paintAreas>
+    </leveling>
+
+    <indoorAreas>
+         <indoorArea startNode="indoorArea1Start" widthNode="indoorArea1Width" heightNode="indoorArea1Height"/>
+    </indoorAreas>
+
+    <tipOcclusionUpdateAreas>
+        <tipOcclusionUpdateArea startNode="tipOcclusionUpdateArea1Start" endNode="tipOcclusionUpdateArea1End" />
+    </tipOcclusionUpdateAreas>
+
+    <ai>
+        <updateAreas>
+            <updateArea startNode="tipOcclusionUpdateArea1Start" endNode="tipOcclusionUpdateArea1End" />
+        </updateAreas>
+    </ai>
+
+    <triggerMarkers>
+        <triggerMarker node="markerFood" filename="$data/shared/assets/marker/markerIcons.xml" id="UNLOAD" />
+        <triggerMarker node="markerAnimals" filename="$data/shared/assets/marker/markerIcons.xml" id="ANIMALS" />
+        <triggerMarker node="markerLiquidManure" filename="$data/shared/assets/marker/markerIcons.xml" id="LOAD" />
+    </triggerMarkers>
+
+    <hotspots>
+        <hotspot type="PIG" teleportNode="teleportNode" />
+    </hotspots>
+
+
+    <infoTrigger triggerNode="infoTrigger" />
+
+    <husbandry saveId="Animals_PIG" hasStatistics="false">
+        <storage node="storage" fillTypes="LIQUIDMANURE STRAW MANURE" isExtension="false">
+            <capacity fillType="LIQUIDMANURE" capacity="85500" />
+            <capacity fillType="STRAW" capacity="25020" />
+            <capacity fillType="MANURE" capacity="0" />
+        </storage>
+
+         <unloadingStation supportsExtension="true" storageRadius="50" hideFromPricesMenu="true" >
+            <unloadTrigger exactFillRootNode="exactFillRootNodeStraw" fillTypes="STRAW" >
+                <baleTrigger triggerNode="baleTriggerStraw"/>
+            </unloadTrigger>
+            <unloadTrigger fillTypes="LIQUIDMANURE MANURE" />
+         </unloadingStation>
+
+         <loadingStation supportsExtension="true" storageRadius="50">
+             <loadTrigger triggerNode="liquidManureTrigger" fillTypes="LIQUIDMANURE" fillLitersPerSecond="2000" aiNode="aiLoadingNodeLiquidManure"/>
+         </loadingStation>
+
+        <animals type="PIG" maxNumAnimals="180" maxNumVisualAnimals="15">
+            <navigation rootNode="navigationRootNode" filename="maps/placeables/animals/pigBarnMedium/navigationMeshMI.i3d" />
+            <loadingTrigger node="loadingTrigger" />
+        </animals>
+
+        <straw>
+            <manure factor="1.5" />
+            <strawPlane node="strawPlane" minY="-0.171" maxY="-0.09" changeVisibility="true" />
+        </straw>
+
+        <food capacity="56700" >
+            <foodPlaces>
+                 <foodPlace node="foodPlace1" />
+                 <foodPlace node="foodPlace2" />
+				 <foodPlace node="foodPlace3" />
+				 <foodPlace node="foodPlace4" />
+				 <foodPlace node="foodPlace5" />
+            </foodPlaces>
+            <foodPlane node="foodPlane" minY="-0.305" maxY="0" changeVisibility="true" defaultFillType="WHEAT" />
+            <feedingTrough exactFillRootNode="exactFillRootNodeFood" />
+        </food>
+
+        <water automaticWaterSupply="true" >
+            <waterPlane node="waterPlane" minY="0.026" maxY="0.254" />
+            <waterPlaces>
+                <waterPlace node="waterPlace1" />
+                <waterPlace node="waterPlace2" />
+            </waterPlaces>
+        </water>
+
+        
+    </husbandry>
+
+
+    <i3dMappings>
+        <i3dMapping id="teleportNode" node="0>0" />
+        <i3dMapping id="exactFillRootNodeFood" node="0>1|0" />
+        <i3dMapping id="foodPlace1" node="0>1|1|0" />
+        <i3dMapping id="foodPlace2" node="0>1|1|1" />
+		<i3dMapping id="foodPlace3" node="0>1|1|2" />
+		<i3dMapping id="foodPlace4" node="0>1|1|3" />
+		<i3dMapping id="foodPlace5" node="0>1|1|4" />
+        <i3dMapping id="foodPlane" node="0>1|2" />
+        <i3dMapping id="storage" node="0>2" />
+        <i3dMapping id="strawPlane" node="0>3|0" />
+        <i3dMapping id="exactFillRootNodeStraw" node="0>3|1" />
+        <i3dMapping id="baleTriggerStraw" node="0>3|2" />
+        <i3dMapping id="liquidManureTrigger" node="0>4|0" />
+        <i3dMapping id="aiLoadingNodeLiquidManure" node="0>4|1" />
+	    <i3dMapping id="exactFillRootNodeWater" node="0>5|0" />
+        <i3dMapping id="waterAINode" node="0>5|1" />
+        <i3dMapping id="waterPlace1" node="0>5|2|0" />
+        <i3dMapping id="waterPlace2" node="0>5|2|1" />
+        <i3dMapping id="waterPlane" node="0>5|3" />
+        <i3dMapping id="navigationRootNode" node="0>6" />
+        <i3dMapping id="markerLiquidManure" node="0>8|0" />
+        <i3dMapping id="markerFood" node="0>8|1" />
+        <i3dMapping id="markerAnimals" node="0>8|2" />
+		<i3dMapping id="markerWater" node="0>8|3" />
+        <i3dMapping id="infoTrigger" node="0>11" />
+        <i3dMapping id="loadingTrigger" node="0>12" />
+        <i3dMapping id="clearArea1Start" node="0>13|0" />
+        <i3dMapping id="clearArea1Width" node="0>13|0|0" />
+        <i3dMapping id="clearArea1Height" node="0>13|0|1" />
+        <i3dMapping id="levelArea1Start" node="0>14|0" />
+        <i3dMapping id="levelArea1Width" node="0>14|0|0" />
+        <i3dMapping id="levelArea1Height" node="0>14|0|1" />
+        <i3dMapping id="indoorArea1Start" node="0>15|0" />
+        <i3dMapping id="indoorArea1Width" node="0>15|0|0" />
+        <i3dMapping id="indoorArea1Height" node="0>15|0|1" />
+        <i3dMapping id="paintArea1Start" node="0>16|0" />
+        <i3dMapping id="paintArea1Width" node="0>16|0|0" />
+        <i3dMapping id="paintArea1Height" node="0>16|0|1" />
+        <i3dMapping id="testArea1Start" node="0>17|0" />
+        <i3dMapping id="testArea1End" node="0>17|0|0" />
+        <i3dMapping id="tipOcclusionUpdateArea1Start" node="0>18|0" />
+        <i3dMapping id="tipOcclusionUpdateArea1End" node="0>18|0|0" />
+    </i3dMappings>
+</placeable>

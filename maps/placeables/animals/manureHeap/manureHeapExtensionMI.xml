@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="utf-8" standalone="no" ?>
+<placeable type="manureHeap" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="../../../../shared/xml/schema/placeable.xsd">
+    <annotation>Copyright (C) GIANTS Software GmbH, All Rights Reserved.</annotation>
+
+    <parentFile xmlFilename="maps/placeables/animals/manureHeap/manureHeapMI.xml">
+        <attributes>
+            <set path="placeable.storeData.name" value="%s %s"/>
+            <set path="placeable.storeData.name#params" value="$l10n_manureHeap|$l10n_configuration_extension"/>
+            <set path="placeable.storeData.brush.tab" value="siloExtensions"/>
+
+            <set path="placeable.manureHeap#isExtension" value="true"/>
+         </attributes>
+    </parentFile>
+
+    <storeData>
+        <name>$l10n_manureHeap</name>
+        <image>$data/store/store_empty.png</image>
+        <functions>
+            <function>$l10n_function_manureHeap</function>
+        </functions>
+		<price>1</price>
+		<canBeSold>false</canBeSold>
+        <showInStore>false</showInStore>
+        <dailyUpkeep>0</dailyUpkeep>
+        <rotation>0</rotation>
+        <brand>NONE</brand>
+        <species>placeable</species>
+        <category>siloExtensions</category>
+        <brush>
+            <type>placeable</type>
+            <category>buildings</category>
+            <tab>siloExtensions</tab>
+        </brush>
+        <vertexBufferMemoryUsage>0</vertexBufferMemoryUsage>
+        <indexBufferMemoryUsage>0</indexBufferMemoryUsage>
+        <textureMemoryUsage>0</textureMemoryUsage>
+        <audioMemoryUsage>0</audioMemoryUsage>
+        <instanceVertexBufferMemoryUsage>0</instanceVertexBufferMemoryUsage>
+        <instanceIndexBufferMemoryUsage>0</instanceIndexBufferMemoryUsage>
+    </storeData>
+</placeable>

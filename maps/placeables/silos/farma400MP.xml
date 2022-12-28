@@ -1,0 +1,115 @@
+<?xml version="1.0" encoding="utf-8" standalone="no" ?>
+<placeable type="silo" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="../../../../../shared/xml/schema/placeable.xsd">
+    <storeData>
+        <name>$l10n_farma400MP</name>
+        <functions>
+            <function>$l10n_function_farmSilo</function>
+        </functions>
+        <image>$data/store/store_empty.png</image>
+        <price>1</price>
+		<canBeSold>false</canBeSold>
+        <showInStore>false</showInStore>
+        <dailyUpkeep>0</dailyUpkeep>
+        <lifetime>1000</lifetime>
+        <rotation>0</rotation>
+        <brand>UNIA</brand>
+        <species>placeable</species>
+        <category>silos</category>
+        <brush>
+            <type>placeable</type>
+            <category>buildings</category>
+            <tab>silos</tab>
+        </brush>
+        <vertexBufferMemoryUsage>1549056</vertexBufferMemoryUsage>
+        <indexBufferMemoryUsage>176640</indexBufferMemoryUsage>
+        <textureMemoryUsage>2162688</textureMemoryUsage>
+        <instanceVertexBufferMemoryUsage>0</instanceVertexBufferMemoryUsage>
+        <instanceIndexBufferMemoryUsage>0</instanceIndexBufferMemoryUsage>
+        <audioMemoryUsage>0</audioMemoryUsage>
+    </storeData>
+
+    <base>
+        <filename>maps/placeables/silos/farma400MP.i3d</filename>
+        <canBeRenamed>true</canBeRenamed>
+		<boughtWithFarmland>true</boughtWithFarmland>
+    </base>
+
+    <placement useRandomYRotation="false" useManualYRotation="true" >
+        <testAreas>
+            
+        </testAreas>
+    </placement>
+
+    <clearAreas>
+        
+    </clearAreas>
+
+    <leveling requireLeveling="true" maxSmoothDistance="1" maxSlope="75" maxEdgeAngle="30">
+        <levelAreas>
+           
+        </levelAreas>
+    </leveling>
+
+    <indoorAreas/>
+
+    <tipOcclusionUpdateAreas>
+        
+    </tipOcclusionUpdateAreas>
+
+    <ai>
+        <updateAreas>
+            <updateArea startNode="tipOcclusionUpdateArea1Start" endNode="tipOcclusionUpdateArea1End" />
+        </updateAreas>
+        <splines>
+            <spline node="aiSpline" />
+        </splines>
+    </ai>
+
+    <dynamicallyLoadedParts>
+        
+    </dynamicallyLoadedParts>
+
+    <infoTrigger triggerNode="infoTrigger"/>
+
+    <silo>
+        <loadingStation node="loadingTrigger" supportsExtension="true" storageRadius="50">
+            <loadTrigger triggerNode="loadingTrigger" fillLitersPerSecond="2000" dischargeNode="dischargeNode" fillTypeCategories="farmSilo" aiNode="aiLoadingNode">
+                <effectNode effectClass="PipeEffect" effectNode="pipeEffect"      materialType="pipe"           fadeTime="0.5" maxBending="0" controlPoint="4.8 0 0 0" />
+                <effectNode                          effectNode="pipeEffectSmoke" materialType="unloadingSmoke" fadeTime="0.5" />
+            </loadTrigger>
+        </loadingStation>
+
+        <unloadingStation supportsExtension="true" storageRadius="50">
+            <unloadTrigger exactFillRootNode="exactFillRootNode" fillTypeCategories="farmSilo" aiNode="aiUnloadingNode"/>
+        </unloadingStation>
+
+        <storages>
+            <storage node="storage" fillTypeCategories="farmSilo" capacity="400000" isExtension="false"/>
+        </storages>
+    </silo>
+
+    <hotspots>
+        <hotspot type="UNLOADING" linkNode="mapPosition" />
+    </hotspots>
+
+    <triggerMarkers>
+        
+    </triggerMarkers>
+
+    <i3dMappings>
+        <i3dMapping id="mapPosition" node="0>0|0" />
+        <i3dMapping id="storage" node="0>0|1" />
+        <i3dMapping id="loadingTrigger" node="0>0|2|0|0" />
+        <i3dMapping id="dischargeNode" node="0>0|2|0|1" />
+        <i3dMapping id="dischargeEffect" node="0>0|2|0|2" />
+        <i3dMapping id="pipeEffect" node="0>0|2|0|2|0" />
+        <i3dMapping id="pipeEffectSmoke" node="0>0|2|0|2|1" />
+        <i3dMapping id="aiLoadingNode" node="0>0|2|0|3" />
+        <i3dMapping id="exactFillRootNode" node="0>0|3|0" />
+        <i3dMapping id="aiUnloadingNode" node="0>0|3|2" />
+        <i3dMapping id="infoTrigger" node="0>0|4" />
+        <i3dMapping id="aiSpline" node="0>0|5" />
+        <i3dMapping id="tipOcclusionUpdateArea1Start" node="0>1|0" />
+        <i3dMapping id="tipOcclusionUpdateArea1End" node="0>1|0|0" />
+    </i3dMappings>
+</placeable>
